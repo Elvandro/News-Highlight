@@ -63,4 +63,29 @@ def get_articles(id):
             article_results_list = get_article_response['articles']
             article_results = process_articles(article_results_list)
 
+    return article_results
+
+def process_articles(articles_list):
+    '''
+    A function that will process the dictionary and output a list of objects(article_results).
+    '''
+    article_results = []
+    source_dictionary = {}
+    for result in articles_list:
+        source_id = result['source']
+        source_dictionary['id'] = source_id['id']
+        source_dictionary['name'] = source_id['name']
+        print(name)
+
+        author = result.get('author')
+        title = result.get('title')
+        description = result.get('description')
+        url = result.get('url')
+        datePublished = result.get('datePublished')
+
+        if url:
+            print(id)
+            source_object = Article(id, name, author,description, url, datePublished)
+            article_results.append(source_object)
+
     return article_results        
