@@ -26,4 +26,24 @@ def get_news():
             source_results_list = get_source_response['results']
             source_results = process_results(source_results_list)
 
-    return source_results        
+    return source_results
+
+def process_results(news_list):
+    '''
+    Function that processes source results and transfroms them to a list
+    '''
+    source_results = []
+    for source in news_list:
+         id = source.get('id')
+         name = source.get('name')
+         description = source.get('description')
+         url = source.get('url')
+         category = source.get('category')
+         country = source.get('country')
+         if url:
+             source_object = Source(id,name,description,url,category,country)
+             source_results.append(source_object)
+
+    return source_results
+
+               
