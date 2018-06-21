@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_news
+from .request import get_news, get_articles
 
 # Views
 @app.route('/')
@@ -23,3 +23,11 @@ def index():
                             technology=technology_list,
                             sports=sports_list,
                             entertainment=entertainment_list)
+
+app.route('/news/<id>')
+    def news (id):
+        '''
+        Returns the news article from a highlight
+        '''
+        news_args = get_articles(id)
+        return render_template("artilce.html", highlight_param=high_args, news=news_args)
