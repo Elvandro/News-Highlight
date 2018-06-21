@@ -3,13 +3,22 @@
 <!-- Content block -->
 
 {% block content %}
-
-<h1> Hello! Welcome to News source </h1>
-<h3> List of Sources </h3>
-<ul>
-  {% for general_list in general %}
-    <li>{{general_list.name}}</li>
-  {% endfor %}
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="text-center"> Hello! Welcome to News source </h1>
+    <h3 class="text-center">Choose a category of news sources</h3>
+    <p class="lead text-center">
+      <p class="text-center">
+        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#generalNews" role="button" aria-expanded="false" aria-controls="collapseExample">General</a>
+        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#businessNews" role="button" aria-expanded="false" aria-controls="collapseExample">Business</a>
+        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#technologyNews" role="button" aria-expanded="false" aria-controls="collapseExample">Technology</a>
+        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#sportsNews" role="button" aria-expanded="false" aria-controls="collapseExample">Sports</a>
+        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#healthNews" role="button" aria-expanded="false" aria-controls="collapseExample">Health</a>
+        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#scienceNews" role="button" aria-expanded="false" aria-controls="collapseExample">Science</a>
+        <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#entertainmentNews" role="button" aria-expanded="false" aria-controls="collapseExample">Entertainment</a>
+      </p>
+    </p>
+  </div>
+</div>
 
 {% endblock %}
