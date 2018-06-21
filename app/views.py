@@ -30,4 +30,4 @@ app.route('/news/<id>')
         Returns the news article from a highlight
         '''
         news_args = get_articles(id)
-        return render_template("artilce.html", highlight_param=high_args, news=news_args)
+        return render_template("article.html", highlight_param=high_args, news=news_args)
