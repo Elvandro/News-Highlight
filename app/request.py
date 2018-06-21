@@ -1,7 +1,8 @@
 from app import app
 import urllib.request, json
-from .models import movie
+from .models import source
 
+Source = source.Source
 # Getting api key
 api_key = app.config['NEWS_API_KEY']
 # Getting the source url
@@ -10,7 +11,7 @@ source_url = app.config['NEWS_SOURCES_BASE_URL']
 article_url = app.config['NEWS_ARTICLE_BASE_URL']
 
 
-def get_news():
+def get_news(category):
     '''
     Function that gets json response to our url request
     '''
@@ -22,8 +23,8 @@ def get_news():
 
         source_results = None
 
-        if get_source_response['results']:
-            source_results_list = get_source_response['results']
+        if get_source_response['sources']:
+            source_results_list = get_source_response['sources']
             source_results = process_results(source_results_list)
 
     return source_results
@@ -45,5 +46,3 @@ def process_results(news_list):
              source_results.append(source_object)
 
     return source_results
-
-               

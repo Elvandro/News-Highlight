@@ -1,1 +1,7 @@
 <h1> Hello! Welcome to News source </h1>
+<h3> General News </h3>
+<ul>
+  {% for general_list in general %}
+    <li>{{general_list.name}}</li>
+  {% endfor %}
+</ul>
