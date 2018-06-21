@@ -1,7 +1,15 @@
+{% extends 'base.html' %}
+
+<!-- Content block -->
+
+{% block content %}
+
 <h1> Hello! Welcome to News source </h1>
-<h3> General News </h3>
+<h3> List of Sources </h3>
 <ul>
   {% for general_list in general %}
     <li>{{general_list.name}}</li>
   {% endfor %}
 </ul>
+
+{% endblock %}
