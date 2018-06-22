@@ -88,4 +88,4 @@ def process_articles(articles_list):
             source_object = Article(id, name, author,description, url, datePublished)
             article_results.append(source_object)
 
-    return article_results        
+    return article_results
