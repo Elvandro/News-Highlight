@@ -1,16 +1,19 @@
-from app import app
 import urllib.request, json
-from .models import source
-from .models import article
+from .models import Source, Article
 
-Source = source.Source
+
 # Getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key = None
 # Getting the source url
-source_url = app.config['NEWS_SOURCES_URL']
+source_url = None
 # Getting the article url
-article_url = app.config['NEWS_ARTICLE_URL']
+article_url = None
 
+def configure_request(app):
+    global api_key, source_url, article_url
+    api_key = app.config['NEWS_API_KEY']
+    source_url = app.config['NEWS_SOURCES_URL']
+    article_url =app.config['NEWS_ARTICLE_URL']
 
 def get_news(category):
     '''
@@ -52,7 +55,7 @@ def get_articles(id):
     '''
     Function that gets json response to our url request
     '''
-    get_aticle_url = article_url.format(api_key)
+    get_aticle_url = article_url.format(id, api_key)
     with urllib.request.urlopen(get_aticle_url) as url:
         get_article_data = url.read()
         get_article_response = json.loads(get_article_data)
@@ -75,17 +78,16 @@ def process_articles(articles_list):
         source_id = result['source']
         source_dictionary['id'] = source_id['id']
         source_dictionary['name'] = source_id['name']
-        print(name)
+        id = source_dictionary['id']
+        name = source_dictionary['name']
 
         author = result.get('author')
         title = result.get('title')
         description = result.get('description')
         url = result.get('url')
-        datePublished = result.get('datePublished')
 
         if url:
-            print(id)
-            source_object = Article(id, name, author,description, url, datePublished)
+            source_object = Article(id, name, author,title, description, url)
             article_results.append(source_object)
 
     return article_results

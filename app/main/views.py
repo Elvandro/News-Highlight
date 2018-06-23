@@ -1,9 +1,9 @@
 from flask import render_template
-from app import app
-from .request import get_news, get_articles
+from . import main
+from ..request import get_news, get_articles
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
     '''
     Function that returns the index page and its data
@@ -24,10 +24,10 @@ def index():
                             sports=sports_list,
                             entertainment=entertainment_list)
 
-app.route('/news/<id>')
+@main.route('/news/<id>')
 def news (id):
     '''
     Returns the news article from a highlight
     '''
     news_args = get_articles(id)
-    return render_template("article.html", highlight_param=high_args, news=news_args)
+    return render_template("article.html", news=news_args)
